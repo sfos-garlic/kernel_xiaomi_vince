@@ -1511,6 +1511,7 @@ static int __init hbtp_init(void)
 {
 	int error = 0;
 
+	return 0;
 	hbtp = kzalloc(sizeof(struct hbtp_data), GFP_KERNEL);
 	if (!hbtp)
 		return -ENOMEM;
