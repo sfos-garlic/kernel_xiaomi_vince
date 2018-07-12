@@ -1096,4 +1096,13 @@ config SND_SOC_AW8896
 	help
 	  Enables support for aw8896 series Smart PA.
 
+config SND_SOC_TFA98XX
+	tristate "NXP Semiconductors TFA98XX amplifier"
+	depends on I2C
+	help
+	Enables support for NXP98xx Smart PA.
+
+source "sound/soc/codecs/tfa/Kconfig"
+source "sound/soc/codecs/tfa9896/Kconfig"
+
 endmenu
