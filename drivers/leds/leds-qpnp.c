@@ -874,6 +874,14 @@ static int qpnp_mpp_set(struct qpnp_led_data *led)
 			}
 		}
 		if (led->mpp_cfg->pwm_mode == PWM_MODE) {
+			#ifdef CONFIG_PLATFORM_TINNO
+			if (led->cdev.brightness > 250) {
+				rc = pwm_config(
+					led->mpp_cfg->pwm_cfg->pwm_dev,
+					1000000,
+					1000000);
+			} else {
+			#endif
 			/*config pwm for brightness scaling*/
 			rc = pwm_change_mode(led->mpp_cfg->pwm_cfg->pwm_dev,
 					PM_PWM_MODE_PWM);
@@ -899,6 +907,9 @@ static int qpnp_mpp_set(struct qpnp_led_data *led)
 					duty_ns,
 					period_us * NSEC_PER_USEC);
 			}
+			#ifdef CONFIG_PLATFORM_TINNO
+			}
+			#endif
 			if (rc < 0) {
 				dev_err(&led->pdev->dev, "Failed to configure pwm for new values\n");
 				goto err_mpp_reg_write;
@@ -2641,6 +2652,11 @@ restore:
 static void led_blink(struct qpnp_led_data *led,
 			struct pwm_config_data *pwm_cfg)
 {
+#ifdef CONFIG_PLATFORM_TINNO
+	if (led->cdev.brightness > 0)
+		led->cdev.brightness = 102;
+	qpnp_mpp_set(led);
+#else
 	int rc;
 
 	flush_work(&led->work);
@@ -2686,6 +2702,7 @@ static void led_blink(struct qpnp_led_data *led,
 		}
 	}
 	mutex_unlock(&led->lock);
+#endif
 }
 
 static ssize_t blink_store(struct device *dev,
@@ -3452,7 +3469,11 @@ static int qpnp_get_config_pwm(struct pwm_config_data *pwm_cfg,
 	pwm_cfg->use_blink =
 		of_property_read_bool(node, "qcom,use-blink");
 
+	#ifdef CONFIG_PLATFORM_TINNO
+	if (pwm_cfg->mode == LPG_MODE) {
+	#else
 	if (pwm_cfg->mode == LPG_MODE || pwm_cfg->use_blink) {
+	#endif
 		pwm_cfg->duty_cycles =
 			devm_kzalloc(&pdev->dev,
 			sizeof(struct pwm_duty_cycles), GFP_KERNEL);
