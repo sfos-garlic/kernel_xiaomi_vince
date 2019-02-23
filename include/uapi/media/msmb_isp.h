@@ -1,3 +1,6 @@
+#ifdef CONFIG_PROJECT_GARLIC
+#include "msmb_isp_n.h"
+#else
 #ifndef __UAPI_MSMB_ISP__
 #define __UAPI_MSMB_ISP__
 
@@ -1095,4 +1098,9 @@ enum msm_isp_ioctl_cmd_code {
 #define VIDIOC_MSM_ISP_BUF_DONE \
 	_IOWR('V', BASE_VIDIOC_PRIVATE+21, struct msm_isp32_event_data)
 
-#endif/* __MSMB_ISP__ */
+#define VIDIOC_MSM_ISP_DUAL_HW_LPM_MODE \
+	_IOWR('V', MSM_ISP_DUAL_HW_LPM_MODE, \
+	struct msm_vfe_dual_lpm_mode)
+
+#endif /* __MSMB_ISP__ */
+#endif /* CONFIG_PROJECT_GARLIC */
