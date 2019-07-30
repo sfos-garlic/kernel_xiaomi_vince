@@ -1,7 +1,11 @@
 dtb-$(CONFIG_ARCH_MSM8953) += msm8953-qrd-sku3-vince.dtb
-dtb-$(CONFIG_ARCH_QCOM)	+= apq8016-sbc.dtb msm8916-mtp.dtb
-dtb-$(CONFIG_ARCH_QCOM)	+= msm8996-mtp.dtb
-dtb-$(CONFIG_ARCH_QCOM)	+= apq8096-db820c.dtb
+#dtb-$(CONFIG_ARCH_QCOM)	+= apq8016-sbc.dtb msm8916-mtp.dtb
+#dtb-$(CONFIG_ARCH_QCOM)	+= msm8996-mtp.dtb
+#dtb-$(CONFIG_ARCH_QCOM)	+= apq8096-db820c.dtb
+
+# Add 1k of padding to the DTBs to allow for environment variables
+# to be runtime added by the bootloader (i.e. /chosen properties)
+DTC_FLAGS += -p 1024
 
 ifeq ($(CONFIG_PROJECT_GARLIC),y)
 dtb-$(CONFIG_ARCH_MSM8937) += msm8937-pmi8950-mtp-garlic.dtb
