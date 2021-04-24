@@ -1373,3 +1373,33 @@ source "arch/arm64/crypto/Kconfig"
 endif
 
 source "lib/Kconfig"
+
+config PLATFORM_TINNO
+	tristate "Tinno Platform"
+	help
+	  Tells whether it is a tinno device or not
+
+config PLATFORM_V12BN
+	tristate "Tinno Platform"
+	help
+	  Tells whether it is device from V12* familly
+
+config PROJECT_GARLIC
+	bool "GARLIC project support"
+	help
+	  This option enables support project name
+
+config PROJECT_WIMLITE
+	bool "WIMLITE project support"
+	help
+	  This option enables support project name
+
+config PROJECT_HS2
+	bool "HS2 project support"
+	help
+	  This option enables support project name
+
+config PROJECT_HS3
+	bool "H23 project support"
+	help
+	  This option enables support project name
