@@ -282,6 +282,7 @@ MODULE_PARM_DESC(chg_detection_for_float_charger,
 
 static struct msm_otg *the_msm_otg;
 static bool debug_bus_voting_enabled;
+static bool debug_floated_charger_enabled;
 
 static struct regulator *hsusb_3p3;
 static struct regulator *hsusb_1p8;
@@ -3944,6 +3945,10 @@ static int msm_otg_probe(struct platform_device *pdev)
 	void __iomem *tcsr;
 	int id_irq = 0;
 
+	#ifdef CONFIG_PLATFORM_V12BN
+	struct qpnp_vadc_chip *vadc_dev = NULL;
+	#endif
+
 	dev_info(&pdev->dev, "msm_otg probe\n");
 
 	motg = kzalloc(sizeof(struct msm_otg), GFP_KERNEL);
@@ -4122,6 +4127,11 @@ static int msm_otg_probe(struct platform_device *pdev)
 
 	of_property_read_u32(pdev->dev.of_node, "qcom,pm-qos-latency",
 				&motg->pm_qos_latency);
+
+	#ifdef CONFIG_PLATFORM_V12BN
+	if (of_find_property(pdev->dev.of_node, "qcom,usbin-vadc", NULL))
+		vadc_dev = qpnp_get_vadc(&pdev->dev, "usbin");
+	#endif
 
 	motg->enable_sdp_check_timer = of_property_read_bool(pdev->dev.of_node,
 				"qcom,enumeration-check-for-sdp");
@@ -4432,6 +4442,10 @@ static int msm_otg_probe(struct platform_device *pdev)
 	phy->set_power = msm_otg_set_power;
 	phy->set_suspend = msm_otg_set_suspend;
 	phy->dbg_event = msm_otg_dbg_log_event;
+
+	#ifdef CONFIG_PLATFORM_V12BN
+	motg->vadc_dev = vadc_dev;
+	#endif
 
 	phy->io_ops = &msm_otg_io_ops;
 

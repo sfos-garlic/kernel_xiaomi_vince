@@ -521,6 +521,58 @@ config NX30P6093
 	  usb_psy to disable CC detection on the event of any water/debris
 	  detected at USBIN.
 
+config TINNO_CHARGER_CONFIG
+        bool "Tinno charger config"
+        default n
+	help
+          Say Y here to enable tinno battery charger config.
+
+config TINNO_BATTERY_FEATURE
+        bool "Tinno battery feature config"
+        default n
+	help
+          Say Y here to enable tinno battery feature config.
+
+config TINNO_CHECK_LOWBAT_CAP
+	bool "Tinno battery low high current discharger feature config"
+        default n
+	help
+          Say Y here to enable tinno battery low high current discharger feature config.
+
+config TINNO_BATTERY_CMD_DEBUG
+        bool "Tinno battery command debug config"
+        default n
+	help
+          Say Y here to enable tinno battery feature config.
+
+config TINNO_BATTERY_FG_HEART
+	tristate "TINNO battery FG heart config for debug"
+	depends on SPMI || MSM_SPMI
+	depends on OF_SPMI
+	help
+	 Say Y here to enable support for tinno battery heart update for charger debug
+	 PMIC chips.
+
+config SMART_CHARGING_CONTROL
+	bool "smart charing"
+	default n	
+	help
+	  Say Y here to enable smart charging control driver. 
+
+config CUSTOM_PARALLEL_ICL
+	bool "Custom parallel ICL"
+	depends on QPNP_SMBCHARGER
+	default n
+	help
+	  Say Y here to enable custom parallel ICL. 
+
+config JEITA_FLOAT_VOLTAGE_ADJ
+	bool "Change jeita float voltage"
+	depends on QPNP_SMBCHARGER
+	default n
+	help
+	  Say Y here to enable changing the jeita float voltage.
+
 source "drivers/power/supply/qcom/Kconfig"
 
 endif # POWER_SUPPLY
