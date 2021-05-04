@@ -1341,6 +1341,26 @@ if (limPopulateMatchingRateSet(pMac,
                     || pAssocReq->WMMInfoStation.acbk_uapsd 
                     || pAssocReq->WMMInfoStation.acvo_uapsd 
                     || pAssocReq->WMMInfoStation.acvi_uapsd))
+             #ifdef WLAN_FEATURE_SAE
+                if (akm_type == ANI_AKM_TYPE_SAE) {
+                    if (eSIR_SUCCESS != (status =
+                        lim_check_sae_pmf_cap(psessionEntry, &Dot11fIERSN))) {
+                        /* Reject pmf disable SAE STA */
+                        limLog(pMac, LOGW, FL("Rejecting Re/Assoc req from STA:"
+                                MAC_ADDRESS_STR), MAC_ADDR_ARRAY(pHdr->sa));
+                        limSendAssocRspMgmtFrame(
+                                    pMac,
+                                    status,
+                                    1,
+                                    pHdr->sa,
+                                    subType, 0,psessionEntry, NULL);
+                        goto error;
+                    }
+                }
+             #endif
+             
+            } /* end - if(pAssocReq->rsnPresent) */
+            if((!pAssocReq->rsnPresent) && pAssocReq->wpaPresent)
             {
 
                 /**
