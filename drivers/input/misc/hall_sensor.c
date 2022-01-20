@@ -265,7 +265,7 @@ static int hall_driver_probe(struct platform_device *dev)
 	struct hall_data *data;
 	int err = 0;
 	int irq_flags;
-	int ret = 0;
+//	int ret = 0;
 
 	dev_dbg(&dev->dev, "hall_driver probe\n");
 	data = devm_kzalloc(&dev->dev, sizeof(struct hall_data), GFP_KERNEL);
