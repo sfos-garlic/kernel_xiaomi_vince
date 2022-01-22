@@ -282,7 +282,7 @@ MODULE_PARM_DESC(chg_detection_for_float_charger,
 
 static struct msm_otg *the_msm_otg;
 static bool debug_bus_voting_enabled;
-static bool debug_floated_charger_enabled;
+//static bool debug_floated_charger_enabled;
 
 static struct regulator *hsusb_3p3;
 static struct regulator *hsusb_1p8;
