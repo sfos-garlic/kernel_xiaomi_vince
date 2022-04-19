@@ -128,9 +128,6 @@
 			/delete-property/ qcom,en-ext-pfet-sc-pro;
 		};
 
-		pmi_haptic: qcom,haptic@c000 {
-			qcom,vmax-mv = <3000>;
-		};
 	};
 };
 &soc {
@@ -291,4 +288,8 @@
 
 &sdhc_2 {
 	cd-gpios = <&tlmm 67 0x0>;
+};
+
+&apps_iommu {
+	qcom,no-aarch64;
 };

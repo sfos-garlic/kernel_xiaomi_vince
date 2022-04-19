@@ -563,7 +563,6 @@
 		dmas = <&dma_blsp1 6 64 0x20000020 0x20>,
 			<&dma_blsp1 7 32 0x20000020 0x20>;
 		dma-names = "tx", "rx";
-		status = "disabled";
 	};
 
 	i2c_3: i2c@78b7000 { /* BLSP1 QUP3 */
@@ -641,7 +640,6 @@
 		dmas = <&dma_blsp2 4 64 0x20000020 0x20>,
 			<&dma_blsp2 5 32 0x20000020 0x20>;
 		dma-names = "tx", "rx";
-		status = "disabled";
 	};
 
 	spi_3: spi@78b7000 { /* BLSP1 QUP3 */
