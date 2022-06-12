@@ -380,7 +380,24 @@
 		qcom,leds@a100 {
 			compatible = "qcom,leds-qpnp";
 			reg = <0xa100 0x100>;
+			status = "okay";
+			qcom,led_mpp_2 {
 			label = "mpp";
+				linux,name = "green";
+				linux,default-trigger = "none";
+				qcom,default-state = "off";
+				qcom,max-current = <40>;
+				qcom,current-setting = <10>;
+				qcom,id = <6>;
+				qcom,mode = "pwm";
+				qcom,source-sel = <8>;
+				qcom,mode-ctrl = <0x60>;
+				qcom,pwm-channel = <0>;
+				qcom,pwm-us = <5000000>;
+				pwms = <&pmi8950_pwm 0 0>;
+				pwm-names="green";
+				qcom,use-blink;
+			};
 		};
 	};
 
@@ -391,13 +408,18 @@
 		#size-cells = <1>;
 
 		pmi8950_pwm: pwm@b000 {
-			status = "disabled";
-			compatible = "qcom,qpnp-pwm";
-			reg = <0xb000 0x100>;
-			reg-names = "qpnp-lpg-channel-base";
-			qcom,channel-id = <0>;
-			qcom,supported-sizes = <6>, <9>;
-			#pwm-cells = <2>;
+				compatible = "qcom,qpnp-pwm";
+				reg = <0xb000 0x100>;
+				reg-names = "qpnp-lpg-channel-base";
+				qcom,channel-id = <0>;
+				qcom,supported-sizes = <6>, <9>;
+				qcom,period = <1000000>;
+				qcom,dtest-line = <1>;
+				qcom,dtest-output = <1>;
+				#pwm-cells = <2>;
+				qcom,pwm {
+				qcom,duty = <500000>; 
+				label = "pwm";};
 		};
 
 		labibb: qpnp-labibb-regulator {
@@ -549,6 +571,16 @@
 				qcom,max-current = <1000>;
 				qcom,duration = <1280>;
 				qcom,id = <1>;
+				qcom,current = <625>;    
+			};
+			pmi8950_flash2: qcom,flash_2 {
+				label = "flash";
+				qcom,led-name = "led:flash_2";
+				qcom,default-led-trigger =
+						"flash2_trigger";
+				qcom,max-current = <1000>;
+				qcom,duration = <1280>;
+				qcom,id = <3>;
 				qcom,current = <625>;
 			};
 
@@ -569,6 +601,15 @@
 						"torch1_trigger";
 				qcom,max-current = <200>;
 				qcom,id = <1>;
+				qcom,current = <120>;  
+			};
+			pmi8950_torch2: qcom,torch_2 {
+				label = "torch";
+				qcom,led-name = "led:torch_2";
+				qcom,default-led-trigger =
+						"torch2_trigger";
+				qcom,max-current = <200>;
+				qcom,id = <3>;
 				qcom,current = <120>;
 			};
 
@@ -598,13 +639,15 @@
 			qcom,int-pwm-freq-khz = <505>;
 			qcom,play-mode = "direct";
 			qcom,wave-play-rate-us = <5263>;
-			qcom,actuator-type = <0>;
+			qcom,actuator-type = "erm";
 			qcom,wave-shape = "square";
-			qcom,vmax-mv = <2000>;
+			qcom,vmax-mv = <3000>;
 			qcom,ilim-ma = <800>;
 			qcom,sc-deb-cycles = <8>;
 			qcom,en-brake;
 			qcom,brake-pattern = <0x3 0x3 0x0 0x0>;
+			qcom,use-play-irq;
+			qcom,use-sc-irq;
 			qcom,wave-samples = <0x3e 0x3e 0x3e 0x3e 0x3e
 							0x3e 0x3e 0x3e>;
 			qcom,wave-rep-cnt = <1>;
