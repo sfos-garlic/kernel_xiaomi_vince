@@ -54,7 +54,7 @@
 			};
 		};
 
-		pmi8950_charger: qcom,qpnp-smbcharger {
+		qpnp_smbcharger: qcom,qpnp-smbcharger {
 			qcom,iterm-ma = <250>;
 			qcom,float-voltage-mv = <4400>;
 			qcom,fastchg-current-ma = <1500>;
@@ -69,7 +69,7 @@
 			qcom,speed-current = <1500 1400 1200 1100 900 700 600 450 400 0>;
 		};
 
-		pmi8950_fg: qcom,fg {
+		qpnp_fg: qcom,fg {
 			qcom,fg-cc-cv-threshold-mv = <4390>;
 			qcom,hold-soc-while-full;
 			qcom,vbat-estimate-diff-mv =<120>;
