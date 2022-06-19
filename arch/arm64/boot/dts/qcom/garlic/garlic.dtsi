@@ -67,6 +67,8 @@
 			qcom,no-parallel-defualt-dcp-icl-ma = <1400>;
 			qcom,no_support_qc;
 			qcom,speed-current = <1500 1400 1200 1100 900 700 600 450 400 0>;
+ 			/delete-property/ qcom,iterm-disable;
+ 			extcon = <&qpnp_smbcharger>;
 		};
 
 		qpnp_fg: qcom,fg {

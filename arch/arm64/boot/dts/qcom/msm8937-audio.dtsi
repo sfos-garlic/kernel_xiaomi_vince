@@ -12,7 +12,7 @@
  */
 
 #include "msm-audio-lpass.dtsi"
-#include "msm8953-wsa881x.dtsi"
+#include "msm8937-wsa881x.dtsi"
 
 &msm_audio_ion {
 	iommus = <&apps_iommu 0x2001 0x0>;
@@ -200,7 +200,6 @@
 	};
 
 	ext_codec: sound-9335 {
-		status = "disabled";
 		compatible = "qcom,msm8952-audio-slim-codec";
 		qcom,model = "msm8952-tasha-snd-card";
 
@@ -310,7 +309,6 @@
 	};
 
 	wcd9xxx_intc: wcd9xxx-irq {
-		status = "disabled";
 		compatible = "qcom,wcd9xxx-irq";
 		interrupt-controller;
 		#interrupt-cells = <1>;
@@ -321,7 +319,6 @@
 	};
 
 	clock_audio: audio_ext_clk {
-		status = "disabled";
 		compatible = "qcom,audio-ref-clk";
 		clock-names = "osr_clk";
 		qcom,node_has_rpm_clock;
@@ -333,7 +330,6 @@
 	};
 
 	wcd_rst_gpio: msm_cdc_pinctrl {
-		status = "disabled";
 		compatible = "qcom,msm-cdc-pinctrl";
 		pinctrl-names = "aud_active", "aud_sleep";
 		pinctrl-0 = <&cdc_reset_active>;
