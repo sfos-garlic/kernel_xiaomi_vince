@@ -1,5 +1,3 @@
-obj-$(CONFIG_FINGERPRINT_FPC1020) += fpc/
-obj-$(CONFIG_FINGERPRINT_GOODIX_GF3208_E7) += goodix_e7/
 #
 # Makefile for the fingerprint drivers.
 #

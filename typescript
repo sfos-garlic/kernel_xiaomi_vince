@@ -1,0 +1,123 @@
+Script started on 2022-06-28 04:23:52+05:30 [<not executed on terminal>]
+commit ff29c18cf97ad460a063598938030f86a400461a
+Author: pbteja100 <pbteja100@gmail.com>
+Date:   Tue Jun 21 02:16:16 2022 +0530
+
+    audio changes
+
+commit 95de5b6f5ebad9b223b0e83d813b31006ea14853
+Author: pbteja100 <pbteja100@gmail.com>
+Date:   Mon Jun 20 22:44:13 2022 +0530
+
+    Revert "techpack: Make everything built-in for sdm450"
+    
+    This reverts commit 0e01cdddb40590a8a223909827b28703b0e57894.
+
+commit 828f3fa96b420345e29d0ccb557099484abccbf1
+Author: Sultan Alsawaf <sultan@kerneltoast.com>
+Date:   Sat Apr 13 20:18:34 2019 -0700
+
+    power: reset: Always perform a warm reset on reboot
+    
+    Force reboots to perform a warm reset so that the pstore buffer in DRAM
+    remains intact.
+    
+    Signed-off-by: Sultan Alsawaf <sultan@kerneltoast.com>
+
+commit 386d332f1d5f44ecf21d978077d110ea82ef8f14
+Author: Hriday Sharm64a <hridaysharma42@gmail.com>
+Date:   Wed Mar 7 10:19:11 2018 +0000
+
+    Revert "arm64: dts: msm: Enable csiphy clk in csid for msm8937 and msm8953"
+    
+    This reverts commit a71cae94959c75399f51639bf5877dcad3c263bf.
+
+commit 184077ba7c396e346a79a9ca6e4c4cb0f9a0a66d
+Author: Hriday Sharm64a <hridaysharma42@gmail.com>
+Date:   Wed Mar 7 09:15:35 2018 +0000
+
+    Revert "arm64: dts: msm: Update the max-voltage level for CX on 8937"
+    
+    This reverts commit 1712aa0b10e89a9c10ef9fa54ebdeb0217caff5c.
+
+commit 55d3bc43259fd529bf993e14ff2cb395d36a28e4
+Author: pbteja100 <pbteja100@gmail.com>
+Date:   Mon Jun 20 13:15:04 2022 +0530
+
+    temp
+
+commit 99ef205cec05df9997e885049f79376c94598d7f
+Author: me-cafebabe <87921983+me-cafebabe@users.noreply.github.com>
+Date:   Mon Oct 18 20:22:41 2021 +0800
+
+    techpack: audio: asoc: msm8952: Bring back old FE DAIs
+    
+    Co-authored-by: Jacob Deepu <d2jdeepu@gmail.com>
+
+commit d0c3e0817dfad80b5be54d8102507a29f0764341
+Author: me-cafebabe <87921983+me-cafebabe@users.noreply.github.com>
+Date:   Mon Oct 18 15:50:49 2021 +0800
+
+    techpack: audio: Revert "ASoC: msm: qdsp6v2: Remove unused dapm routings"
+    
+    This reverts commit df5a00af69f36e3f91f83ea858ab752cd8da15cc.
+    
+    Co-authored-by: Jacob Deepu <d2jdeepu@gmail.com>
+
+commit c4e4a7f93dfde41b7d3fba07b38598f2721657c8
+Author: pbteja100 <pbteja100@gmail.com>
+Date:   Mon Jun 20 11:20:17 2022 +0530
+
+    Revert "Revert "drivers/clk/msm/clock-cpu-8939.c: let's try to use speed1bin clocks""
+    
+    This reverts commit c68dfc576d4aaa4c8054948b96e764c282a8dd3a.
+
+commit 2a7c732fb2b73dd05be66f69dcc86538bf1bcb18
+Author: pbteja100 <pbteja100@gmail.com>
+Date:   Mon Jun 20 11:18:07 2022 +0530
+
+    enable xt_qtaguid
+
+commit 3f168bcb962d4581399e6236cc6bfab699ea4bda
+Author: me-cafebabe <87921983+me-cafebabe@users.noreply.github.com>
+Date:   Tue Feb 16 16:13:45 2021 +0800
+
+    Revert "ANDROID: Remove xt_qtaguid module from new kernels."
+    
+    This reverts commit cc0665f236f3dbd2e1e0908ab0fe80b7a36b123f.
+
+commit ef23db98c3378dcc743f6af413251b0901fc395e
+Author: pbteja100 <pbteja100@gmail.com>
+Date:   Mon Jun 20 11:10:24 2022 +0530
+
+    enabled timed_gpio and timed_output
+
+commit 53381a4222a573f8066be968ace40b1aeeb9ba1f
+Author: me-cafebabe <87921983+me-cafebabe@users.noreply.github.com>
+Date:   Sat Jan 2 15:07:15 2021 +0800
+
+    Revert "android: remove timed output/gpio driver"
+    
+    This reverts commit 9f6b68774f29692f3e5b87e8eae29da61c3b1171.
+
+commit 79acce54a0ce330da5dd4c46a3e799d8a7b906b3
+Author: pbteja100 <pbteja100@gmail.com>
+Date:   Mon Jun 20 10:36:31 2022 +0530
+
+    test simplefb
+
+commit 3cc8e48c3b4f44d8474ee148916aa7d4378118af
+Author: pbteja100 <pbteja100@gmail.com>
+Date:   Sun Jun 19 17:24:32 2022 +0530
+
+    additional sound fixes
+
+commit 43fc35c745a8e2237319a076c12b4f5d3b256cf9
+Author: pbteja100 <pbteja100@gmail.com>
+Date:   Mon Jun 13 14:38:05 2022 +0530
+
+    Revert "Revert "ARM: dts: Mount system as root for sdm439""
+    
+    This reverts commit 449c929a3cdbadd99600fce43fb85430a09fca66.
+
+commit bc763c0328229f835b1b8c1a1024ad
